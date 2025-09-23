@@ -64,7 +64,7 @@ if uploaded_file is not None:
     # Display the uploaded image
     st.markdown("---")
     st.markdown("### 📷 Your Uploaded Image")
-    st.image(uploaded_file, caption="Uploaded outfit photo", use_column_width=True)
+    st.image(uploaded_file, caption="Uploaded outfit photo", use_container_width=True)
     
     try:
         # Save uploaded file to temporary location
