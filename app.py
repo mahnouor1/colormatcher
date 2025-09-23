@@ -68,9 +68,64 @@ with col1:
 
 with col2:
     st.markdown("### 🎨 Available Hijab Colors")
-    # Show top 5 colors from catalog
-    top_colors = [(row['name'], row['hex']) for _, row in catalog.head(5).iterrows()]
-    get_color_palette(top_colors, "Our Collection")
+    
+    # Create a carousel for all colors
+    if 'color_page' not in st.session_state:
+        st.session_state.color_page = 0
+    
+    colors_per_page = 6
+    total_pages = (len(catalog) + colors_per_page - 1) // colors_per_page
+    
+    # Get colors for current page
+    start_idx = st.session_state.color_page * colors_per_page
+    end_idx = min(start_idx + colors_per_page, len(catalog))
+    page_colors = [(row['name'], row['hex'], row['stock']) for _, row in catalog.iloc[start_idx:end_idx].iterrows()]
+    
+    # Display colors in a grid
+    cols = st.columns(3)
+    for i, (name, hex_color, stock) in enumerate(page_colors):
+        with cols[i % 3]:
+            text_color = "white" if hex_color in ["#000000", "#800020", "#1e3a8a", "#800000", "#301934", "#006a4e", "#654321"] else "black"
+            stock_status = "✅" if stock > 0 else "❌"
+            st.markdown(f"""
+            <div style='border:1px solid #ddd;border-radius:8px;padding:10px;margin:5px 0;background:#f9f9f9;text-align:center;'>
+                <div style='width:100%;height:50px;background:{hex_color};border-radius:5px;margin:5px 0;'></div>
+                <h5 style='margin:5px 0;color:#333;font-size:14px;'>{name}</h5>
+                <p style='margin:2px 0;font-size:11px;color:#666;'>{hex_color}</p>
+                <p style='margin:2px 0;font-size:11px;color:#666;'>{stock_status} Stock: {stock}</p>
+            </div>
+            """, unsafe_allow_html=True)
+    
+    # Navigation controls
+    st.markdown("---")
+    col_left, col_center, col_right = st.columns([1, 2, 1])
+    
+    with col_left:
+        if st.button("⬅️ Previous", disabled=(st.session_state.color_page == 0), key="prev_page"):
+            st.session_state.color_page -= 1
+            st.rerun()
+    
+    with col_center:
+        st.markdown(f"**Page {st.session_state.color_page + 1} of {total_pages}**")
+        # Quick page selector
+        selected_page = st.selectbox(
+            "Jump to page:", 
+            range(total_pages), 
+            index=st.session_state.color_page,
+            key="page_selector",
+            label_visibility="collapsed"
+        )
+        if selected_page != st.session_state.color_page:
+            st.session_state.color_page = selected_page
+            st.rerun()
+    
+    with col_right:
+        if st.button("Next ➡️", disabled=(st.session_state.color_page >= total_pages - 1), key="next_page"):
+            st.session_state.color_page += 1
+            st.rerun()
+    
+    # Show total colors count
+    st.markdown(f"*Showing {len(catalog)} total colors in our collection*")
 
 if uploaded_file is not None:
     # Display the uploaded image (smaller size)
