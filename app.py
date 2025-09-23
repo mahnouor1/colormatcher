@@ -30,8 +30,20 @@ def hex_to_rgb(hexstr):
     return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
 
 def color_distance(c1, c2):
-    """Calculate Euclidean distance between two RGB colors"""
-    return sum((a - b) ** 2 for a, b in zip(c1, c2))
+    """Calculate improved color distance using weighted RGB and perceptual differences"""
+    # Convert RGB to more perceptually uniform space
+    r1, g1, b1 = c1
+    r2, g2, b2 = c2
+    
+    # Weighted Euclidean distance (red is less important for clothing)
+    r_mean = (r1 + r2) / 2
+    delta_r = r1 - r2
+    delta_g = g1 - g2
+    delta_b = b1 - b2
+    
+    # Weighted distance formula (more emphasis on green and blue)
+    distance = (2 + r_mean/256) * delta_r**2 + 4 * delta_g**2 + (2 + (255-r_mean)/256) * delta_b**2
+    return distance**0.5
 
 def get_color_palette(colors, title):
     """Display a color palette"""
@@ -61,10 +73,10 @@ with col2:
     get_color_palette(top_colors, "Our Collection")
 
 if uploaded_file is not None:
-    # Display the uploaded image
+    # Display the uploaded image (smaller size)
     st.markdown("---")
     st.markdown("### 📷 Your Uploaded Image")
-    st.image(uploaded_file, caption="Uploaded outfit photo", use_container_width=True)
+    st.image(uploaded_file, caption="Uploaded outfit photo", width=300)
     
     try:
         # Save uploaded file to temporary location
@@ -72,10 +84,13 @@ if uploaded_file is not None:
             tmp_file.write(uploaded_file.getbuffer())
             tmp_file_path = tmp_file.name
         
-        # Extract dominant color
+        # Extract dominant color with better quality
         color_thief = ColorThief(tmp_file_path)
-        dominant_color = color_thief.get_color(quality=1)  # (R, G, B)
+        dominant_color = color_thief.get_color(quality=10)  # Higher quality for better accuracy
         dominant_hex = '#{:02x}{:02x}{:02x}'.format(*dominant_color)
+        
+        # Also get a palette of colors for better matching
+        palette = color_thief.get_palette(color_count=5, quality=10)
         
         # Display detected color
         st.markdown("### 🔍 Color Analysis")
@@ -86,16 +101,32 @@ if uploaded_file is not None:
             st.markdown(f"`{dominant_hex}`")
             st.markdown(f"<div style='width:120px;height:80px;background:{dominant_hex};border:2px solid #333;border-radius:10px;'></div>", unsafe_allow_html=True)
         
-        # Find best matches
+        # Find best matches using improved algorithm
         catalog['rgb'] = catalog['hex'].apply(hex_to_rgb)
-        catalog['distance'] = catalog['rgb'].apply(lambda r: color_distance(r, dominant_color))
-        best_matches = catalog.sort_values('distance').head(3)
+        
+        # Calculate distances for all colors in palette
+        distances = []
+        for color in palette:
+            catalog['temp_distance'] = catalog['rgb'].apply(lambda r: color_distance(r, color))
+            distances.append(catalog['temp_distance'])
+        
+        # Use the minimum distance from any color in the palette
+        catalog['distance'] = pd.concat(distances, axis=1).min(axis=1)
+        
+        # Filter out out-of-stock items and sort by distance
+        in_stock = catalog[catalog['stock'] > 0].copy()
+        if len(in_stock) > 0:
+            best_matches = in_stock.sort_values('distance').head(3)
+        else:
+            # If nothing in stock, show all items
+            best_matches = catalog.sort_values('distance').head(3)
         
         with col2:
             st.markdown("**🥇 Best Match**")
             best_match = best_matches.iloc[0]
             st.markdown(f"**[{best_match['name']}]({best_match['url']})**")
             st.markdown(f"`{best_match['hex']}`")
+            st.markdown(f"📦 Stock: {best_match['stock']} available")
             st.markdown(f"<div style='width:120px;height:80px;background:{best_match['hex']};border:2px solid #333;border-radius:10px;'></div>", unsafe_allow_html=True)
         
         with col3:
@@ -103,14 +134,24 @@ if uploaded_file is not None:
             second_match = best_matches.iloc[1]
             st.markdown(f"**[{second_match['name']}]({second_match['url']})**")
             st.markdown(f"`{second_match['hex']}`")
+            st.markdown(f"📦 Stock: {second_match['stock']} available")
             st.markdown(f"<div style='width:120px;height:80px;background:{second_match['hex']};border:2px solid #333;border-radius:10px;'></div>", unsafe_allow_html=True)
+        
+        # Show detected color palette
+        st.markdown("### 🎨 Detected Color Palette")
+        palette_cols = st.columns(5)
+        for i, color in enumerate(palette):
+            with palette_cols[i]:
+                hex_color = '#{:02x}{:02x}{:02x}'.format(*color)
+                st.markdown(f"<div style='width:60px;height:60px;background:{hex_color};border:1px solid #ccc;border-radius:5px;'></div>", unsafe_allow_html=True)
+                st.caption(hex_color)
         
         # Show all matches with scores
         st.markdown("### 📊 All Color Matches")
         st.markdown("Here are all available hijab colors ranked by how well they match your outfit:")
         
         # Create a dataframe for display
-        display_df = best_matches[['name', 'hex', 'url']].copy()
+        display_df = best_matches[['name', 'hex', 'url', 'stock']].copy()
         display_df['Match Score'] = (1 - (best_matches['distance'] / max(best_matches['distance']))) * 100
         display_df['Match Score'] = display_df['Match Score'].round(1)
         
@@ -124,6 +165,7 @@ if uploaded_file is not None:
                     <div style='width:100%;height:50px;background:{row['hex']};border-radius:5px;margin:10px 0;'></div>
                     <p style='margin:5px 0;font-size:12px;color:#666;'>{row['hex']}</p>
                     <p style='margin:5px 0;font-size:12px;color:#666;'>Match: {row['Match Score']}%</p>
+                    <p style='margin:5px 0;font-size:12px;color:#666;'>📦 Stock: {row['stock']}</p>
                     <a href='{row['url']}' target='_blank' style='color:#8B5CF6;text-decoration:none;font-size:12px;'>View Product →</a>
                 </div>
                 """, unsafe_allow_html=True)

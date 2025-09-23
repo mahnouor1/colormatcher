@@ -1,43 +1,44 @@
-name,hex,url
-Beige,#c8ad97,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=261
-Black,#000000,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=262
-White,#ffffff,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=264
-Dusty Pink,#d4a3ae,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=266
-Navy Blue,#1e3a8a,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=277
-Burgundy,#800020,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=278
-Olive Green,#808000,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=280
-Cream,#f5f5dc,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=282
-Gray,#808080,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=285
-Maroon,#800000,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=286
-Rose,#ff007f,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=263
-Sea Foam,#9fe2bf,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=265
-Aqua,#00ffff,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=267
-Flamingo,#fc8eac,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=279
-Off White,#f8f8ff,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=281
-Milky,#f5f5f5,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=283
-Peach,#ffe5b4,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=287
-Zinc,#7e7e7e,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=268
-Plum,#8e4585,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=284
-Shocking Pink,#fc0fc0,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=288
-Bottle Green,#006a4e,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=269
-Brick,#cb4154,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=289
-Mustard,#ffdb58,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=270
-Skin,#ffcc99,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=290
-Dark Brown,#654321,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=271
-Royal Blue,#4169e1,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=291
-Choco,#d2691e,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=272
-Nude Pink,#f6d1c1,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=273
-Sea Green,#2e8b57,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=274
-Red Maroon,#800000,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=275
-Bubble Gum,#ffc1cc,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=276
-Light Grey,#d3d3d3,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=250
-Peach Pink,#ffdab9,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=251
-Baby Blue,#89cff0,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=252
-Matcha,#7fff00,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=253
-Coral,#ff7f50,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=254
-Dark Purple,#301934,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=255
-Rose Pink,#ff66cc,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=256
-Blush Pink,#ffb6c1,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=257
-Sky,#87ceeb,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=258
-Ice Blue,#99ffff,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=259
-Frost,#e0ffff,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=739
+name,hex,stock,url
+Olive,#808000,89,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=261
+Sea Foam,#9fe2bf,69,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=262
+Rose,#ff007f,145,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=264
+Aqua,#00ffff,69,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=266
+Flamingo,#fc8eac,116,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=277
+Off White,#f8f8ff,101,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=278
+Milky,#f5f5f5,82,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=280
+Black,#000000,3,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=282
+Navy Blue,#1e3a8a,14,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=285
+Smoky,#808080,82,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=286
+Peach,#ffe5b4,62,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=263
+Zinc,#7e7e7e,117,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=265
+Plum,#8e4585,56,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=267
+Red,#ff0000,1,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=279
+Black,#000000,3,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=281
+Shocking Pink,#fc0fc0,6,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=283
+Bottle Green,#006a4e,16,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=287
+Brick,#cb4154,53,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=268
+Mustard,#ffdb58,92,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=284
+Skin,#ffcc99,112,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=288
+Dark Brown,#654321,126,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=269
+Royal Blue,#4169e1,5,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=289
+Choco,#d2691e,105,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=270
+Nude Pink,#f6d1c1,51,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=290
+Sea Green,#2e8b57,8,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=271
+Red Maroon,#800000,88,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=291
+Bubble Gum,#ffc1cc,19,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=272
+Light Grey,#d3d3d3,24,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=273
+Peach Pink,#ffdab9,13,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=274
+Baby Blue,#89cff0,20,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=275
+Matcha,#7fff00,68,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=276
+Coral,#ff7f50,142,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=250
+Dark Purple,#301934,7,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=251
+Rose Pink,#ff66cc,96,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=252
+Blush Pink,#ffb6c1,61,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=253
+Sky,#87ceeb,78,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=254
+White,#ffffff,26,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=255
+Ice Blue,#99ffff,83,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=256
+Frost,#e0ffff,67,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=257
+Moss,#808000,120,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=258
+Dusty Pink,#d4a3ae,60,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=259
+Lavender,#e6e6fa,109,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=739
+Mint Green,#98ff98,39,https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81?category=5#attribute_values=684
