@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PurpleStore - Hijab Color Matcher</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #8B5CF6;
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .header p {
+            color: #666;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .embed-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #8B5CF6;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 20px 10px;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #7C3AED;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧕 PurpleStore</h1>
+            <p>Find the Perfect Hijab Color for Your Outfit</p>
+            <p>Upload a photo of your outfit and discover matching hijab colors from our collection!</p>
+        </div>
+        
+        <div class="embed-container">
+            <!-- Replace with your actual Streamlit Cloud URL after deployment -->
+            <iframe
+                src="https://purple-hijab-matcher.streamlit.app/?embed=true"
+                style="width:100%; height:650px; border:none;"
+                loading="lazy"
+                title="PurpleStore Hijab Color Matcher"
+            ></iframe>
+        </div>
+        
+        <div class="footer">
+            <p>Powered by PurpleStore | Made with ❤️ for our customers</p>
+            <a href="https://www.purplestore.com.pk" class="cta-button">Visit Our Store</a>
+            <a href="https://www.purplestore.com.pk/shop/imported-chiffon-georgette-81" class="cta-button">Shop Hijabs</a>
+        </div>
+    </div>
+</body>
+</html>
