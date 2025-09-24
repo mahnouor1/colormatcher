@@ -9,6 +9,8 @@ A beautiful Streamlit app that helps you find the perfect hijab color to match y
 - **Beautiful UI**: Clean, modern interface with color swatches and match scores
 - **Direct Product Links**: Click through to view and purchase recommended hijabs
 - **Multiple Recommendations**: Get top 3 color matches with confidence scores
+- **Swipeable Collection**: Browse all 43 hijab colors with navigation arrows
+- **Stock Information**: See real-time stock availability for each color
 
 ## 🚀 Quick Start
 
@@ -16,8 +18,8 @@ A beautiful Streamlit app that helps you find the perfect hijab color to match y
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd purple-hijab-matcher
+   git clone https://github.com/mahnouor1/purplehijab.git
+   cd purplehijab
    ```
 
 2. **Install dependencies**
@@ -36,17 +38,17 @@ A beautiful Streamlit app that helps you find the perfect hijab color to match y
 ### Deployment Options
 
 #### Option 1: Streamlit Cloud (Recommended)
-1. Push your code to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Sign in with GitHub
-4. Click "New app"
-5. Select your repository and set `app.py` as the main file
-6. Deploy! You'll get a URL like: `https://purple-hijab-matcher.streamlit.app`
+1. Go to [share.streamlit.io](https://share.streamlit.io)
+2. Sign in with GitHub
+3. Click "New app"
+4. Select repository: `mahnouor1/purplehijab`
+5. Set main file: `app.py`
+6. Deploy! You'll get a URL like: `https://purplehijab.streamlit.app`
 
 #### Option 2: Heroku
 1. Install Heroku CLI
 2. Login: `heroku login`
-3. Create app: `heroku create purple-hijab-matcher`
+3. Create app: `heroku create purplehijab`
 4. Deploy: `git push heroku main`
 
 #### Option 3: Render
@@ -58,28 +60,32 @@ A beautiful Streamlit app that helps you find the perfect hijab color to match y
 ## 📁 Project Structure
 
 ```
-purple-hijab-matcher/
+purplehijab/
 ├── app.py                 # Main Streamlit application
-├── hijab_catalog.csv      # Hijab color database
+├── hijab_catalog.csv      # Hijab color database (43 colors)
 ├── requirements.txt       # Python dependencies
+├── .streamlit/config.toml # Streamlit configuration
 ├── Procfile              # Heroku deployment config
+├── DEPLOYMENT.md         # Deployment guide
+├── embed-example.html    # Website integration example
 └── README.md             # This file
 ```
 
 ## 🎨 How It Works
 
 1. **Upload**: User uploads a photo of their outfit
-2. **Analyze**: ColorThief extracts the dominant color from the image
-3. **Match**: Algorithm compares the detected color with hijab catalog colors
-4. **Recommend**: Shows best matches with visual color swatches and product links
+2. **Analyze**: ColorThief extracts 5 dominant colors from the image
+3. **Match**: Improved algorithm compares colors with hijab catalog
+4. **Recommend**: Shows best matches with stock info and product links
+5. **Browse**: Users can swipe through all 43 available colors
 
 ## 🛠️ Technical Details
 
 - **Framework**: Streamlit
-- **Color Analysis**: ColorThief library
-- **Data**: CSV-based hijab catalog
-- **Algorithm**: Euclidean distance for color matching
-- **UI**: Responsive design with HTML/CSS styling
+- **Color Analysis**: ColorThief library with improved quality settings
+- **Data**: CSV-based hijab catalog with stock information
+- **Algorithm**: Weighted Euclidean distance for better color matching
+- **UI**: Responsive design with HTML/CSS styling and carousel navigation
 
 ## 📝 Tips for Best Results
 
@@ -93,12 +99,24 @@ purple-hijab-matcher/
 ### Adding New Hijab Colors
 Edit `hijab_catalog.csv` to add new colors:
 ```csv
-name,hex,url
-New Color,#ff5733,https://purplestore.com.pk/product/new-color-hijab
+name,hex,stock,url
+New Color,#ff5733,50,https://www.purplestore.com.pk/product/new-color-hijab
 ```
 
 ### Modifying the Algorithm
 The color matching algorithm is in the `color_distance()` function. You can adjust it to use different color spaces or weighting.
+
+## 🌐 Website Integration
+
+### Embed Code for Your Website
+```html
+<iframe
+  src="https://purplehijab.streamlit.app/?embed=true"
+  style="width:100%; height:650px; border:none; border-radius:10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+  loading="lazy"
+  title="PurpleStore Hijab Color Matcher"
+></iframe>
+```
 
 ## 📄 License
 
