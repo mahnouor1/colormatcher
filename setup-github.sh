@@ -1,0 +1,57 @@
+#!/bin/bash
+
+echo "🚀 PurpleStore Hijab Color Matcher - GitHub Setup"
+echo "=================================================="
+
+# Check if git is initialized
+if [ ! -d ".git" ]; then
+    echo "❌ Git repository not initialized. Please run 'git init' first."
+    exit 1
+fi
+
+echo "📋 Current repository status:"
+git status --short
+
+echo ""
+echo "🔗 To deploy to Streamlit Cloud, follow these steps:"
+echo ""
+echo "1. Create a new repository on GitHub:"
+echo "   - Go to https://github.com/new"
+echo "   - Repository name: purple-hijab-matcher"
+echo "   - Make it public (required for free Streamlit Cloud)"
+echo "   - Don't initialize with README (we already have files)"
+echo ""
+echo "2. Connect your local repository to GitHub:"
+echo "   git remote add origin https://github.com/YOUR_USERNAME/purple-hijab-matcher.git"
+echo "   git branch -M main"
+echo "   git push -u origin main"
+echo ""
+echo "3. Deploy to Streamlit Cloud:"
+echo "   - Go to https://share.streamlit.io"
+echo "   - Sign in with GitHub"
+echo "   - Click 'New app'"
+echo "   - Repository: YOUR_USERNAME/purple-hijab-matcher"
+echo "   - Main file: app.py"
+echo "   - Click 'Deploy'"
+echo ""
+echo "4. Your app will be available at:"
+echo "   https://purple-hijab-matcher.streamlit.app"
+echo ""
+echo "5. For website integration, use this embed code:"
+echo ""
+echo "<iframe"
+echo "  src=\"https://purple-hijab-matcher.streamlit.app/?embed=true\""
+echo "  style=\"width:100%; height:650px; border:none; border-radius:10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\""
+echo "  loading=\"lazy\""
+echo "  title=\"PurpleStore Hijab Color Matcher\""
+echo "></iframe>"
+echo ""
+echo "📁 Files ready for deployment:"
+echo "   ✅ app.py (main application)"
+echo "   ✅ requirements.txt (dependencies)"
+echo "   ✅ hijab_catalog.csv (color database)"
+echo "   ✅ .streamlit/config.toml (configuration)"
+echo "   ✅ DEPLOYMENT.md (deployment guide)"
+echo "   ✅ embed-example.html (integration example)"
+echo ""
+echo "🎉 Ready to deploy! Follow the steps above."
