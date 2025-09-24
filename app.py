@@ -207,7 +207,7 @@ if uploaded_file is not None:
                 st.markdown(f"**{medal}**")
                 st.markdown(f"<div style='width:60px;height:60px;background:{match['hex']};border:2px solid #333;border-radius:8px;'></div>", unsafe_allow_html=True)
 
-        with col2:
+            with col2:
                 st.markdown(f"**[{match['name']}]({match['url']})**")
                 st.markdown(f"`{match['hex']}` | {stock_emoji} Stock: {match['stock']}")
             
@@ -215,7 +215,7 @@ if uploaded_file is not None:
                 if st.button(f"View", key=f"view_{i}"):
                     st.markdown(f"[Shop Now]({match['url']})")
             
-                st.markdown("---")
+            st.markdown("---")
 
         # Show detected color palette - more compact
         st.markdown("### 🎨 Detected Colors from Your Outfit")
