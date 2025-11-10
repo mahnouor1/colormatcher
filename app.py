@@ -93,57 +93,10 @@ st.markdown("""
         font-weight: 600;
     }
     
-    .logo-cloud {
-        background: #A87DC0;
-        padding: 0.6rem 1.2rem;
-        border-radius: 25px;
-        color: white;
-        font-weight: 700;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.3rem;
-        position: relative;
-        box-shadow: 0 2px 8px rgba(168, 125, 192, 0.3);
-    }
-    
-    .logo-cloud .logo-text-large {
-        font-size: 1.1rem;
-        font-weight: 800;
-    }
-    
-    .logo-cloud .logo-text-small {
-        font-size: 0.85rem;
-        font-weight: 600;
-    }
-    
-    .logo-cloud::before {
-        content: '';
-        position: absolute;
-        left: -6px;
-        top: -6px;
-        width: 10px;
-        height: 10px;
-        background: #A87DC0;
-        border-radius: 50%;
-    }
-    
-    .logo-cloud::after {
-        content: '';
-        position: absolute;
-        left: -3px;
-        top: -3px;
-        width: 6px;
-        height: 6px;
-        background: #A87DC0;
-        border-radius: 50%;
-    }
-    
-    .logo-dot {
-        width: 6px;
-        height: 6px;
-        background: #A87DC0;
-        border-radius: 50%;
-        margin-left: 0.3rem;
+    .logo-image {
+        max-height: 60px;
+        height: auto;
+        width: auto;
     }
     
     .contact-btn {
@@ -454,6 +407,14 @@ def color_distance(c1, c2):
     return distance**0.5
 
 # PurpleStore Header - Exact Match from Image
+# Check for logo file first
+logo_paths = ["logo.png", "logo.jpg", "purplestore-logo.png", "purplestore-logo.jpg", "assets/logo.png", "logo.svg"]
+logo_path = None
+for path in logo_paths:
+    if os.path.exists(path):
+        logo_path = path
+        break
+
 # Top grey bar
 st.markdown("""
 <div class="top-grey-bar">
@@ -472,12 +433,18 @@ st.markdown("""
     </div>
     
     <div class="header-center">
-        <div class="logo-cloud">
-            <span class="logo-text-large">Purple</span>
-            <span class="logo-text-small">Store</span>
-            <span class="logo-dot"></span>
-            <span class="logo-dot"></span>
-        </div>
+""", unsafe_allow_html=True)
+
+# Display logo image directly using Streamlit
+if logo_path:
+    st.image(logo_path, width=150, use_container_width=False)
+else:
+    # Fallback text if no logo found
+    st.markdown("""
+    <div style="color: #A87DC0; font-weight: 700; font-size: 1.2rem; text-align: center;">Purple Store</div>
+    """, unsafe_allow_html=True)
+
+st.markdown("""
     </div>
     
     <div class="header-right">
