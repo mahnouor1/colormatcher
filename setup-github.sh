@@ -55,3 +55,4 @@ echo "   ✅ DEPLOYMENT.md (deployment guide)"
 echo "   ✅ embed-example.html (integration example)"
 echo ""
 echo "🎉 Ready to deploy! Follow the steps above."
+
