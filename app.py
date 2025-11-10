@@ -21,56 +21,62 @@ st.markdown("""
         font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     
-    /* Modern Header */
+    /* PurpleStore Header - Centered, Minimal */
     .top-header {
-        background: #c59bd1;
-        padding: 1.25rem 2.5rem;
+        background: white;
+        padding: 2rem 2rem 1.5rem 2rem;
         margin: -1.5rem -1.5rem 2rem -1.5rem;
         display: flex;
-        justify-content: flex-end;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        box-shadow: 0 2px 10px rgba(197, 155, 209, 0.2);
-        min-height: 80px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .header-logo {
+        max-height: 70px;
+        height: auto;
+        width: auto;
+        margin-bottom: 1rem;
+        animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .header-logo img {
+        max-height: 70px;
+        width: auto;
+        height: auto;
     }
     
     .header-content {
-        text-align: right;
-        color: white;
-        animation: slideInRight 0.8s ease-out;
-    }
-    
-    .header-brand {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: white;
-        margin: 0 0 0.25rem 0;
-        letter-spacing: -0.01em;
+        text-align: center;
+        animation: fadeInUp 1s ease-out 0.2s both;
     }
     
     .header-title {
-        font-size: 1rem;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.95);
-        margin: 0 0 0.25rem 0;
-        animation: fadeIn 1s ease-out 0.2s both;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #c59bd1;
+        margin: 0 0 0.5rem 0;
+        letter-spacing: -0.01em;
     }
     
     .header-subtitle {
-        font-size: 0.9rem;
+        font-size: 1rem;
         font-weight: 400;
-        color: rgba(255, 255, 255, 0.9);
+        color: #666;
         margin: 0;
-        animation: fadeIn 1s ease-out 0.4s both;
+        line-height: 1.5;
     }
     
-    @keyframes slideInRight {
+    @keyframes fadeInUp {
         from {
             opacity: 0;
-            transform: translateX(30px);
+            transform: translateY(20px);
         }
         to {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0);
         }
     }
     
@@ -331,13 +337,39 @@ def color_distance(c1, c2):
     distance = (2 + r_mean/256) * delta_r**2 + 4 * delta_g**2 + (2 + (255-r_mean)/256) * delta_b**2
     return distance**0.5
 
-# Modern Header - Top bar with purple background
+# PurpleStore Header - Centered, Minimal (matching www.purplestore.com.pk)
+# Check for logo file (common names)
+logo_paths = ["logo.png", "logo.jpg", "purplestore-logo.png", "purplestore-logo.jpg", "assets/logo.png"]
+logo_path = None
+for path in logo_paths:
+    if os.path.exists(path):
+        logo_path = path
+        break
+
+# Centered header
 st.markdown("""
 <div class="top-header">
+""", unsafe_allow_html=True)
+
+# Display logo if exists, otherwise use text logo
+if logo_path:
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image(logo_path, width=150, use_container_width=False)
+else:
+    # Text-based logo matching PurpleStore style
+    st.markdown("""
+    <div style="text-align: center; margin-bottom: 1rem; animation: fadeInUp 0.8s ease-out;">
+        <div style="font-size: 2rem; font-weight: 800; color: #c59bd1;">
+            Purple Store
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("""
     <div class="header-content">
-        <div class="header-brand">PurpleStore</div>
         <div class="header-title">Hijab Color Matcher</div>
-        <div class="header-subtitle">Find the perfect hijab color to match your outfit.</div>
+        <div class="header-subtitle">Find the perfect hijab color to match your outfit</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
