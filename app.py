@@ -21,52 +21,168 @@ st.markdown("""
         font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     
-    /* PurpleStore Header - Centered, Minimal */
-    .top-header {
-        background: white;
-        padding: 2rem 2rem 1.5rem 2rem;
-        margin: -1.5rem -1.5rem 2rem -1.5rem;
+    /* PurpleStore Header - Exact Match from Image */
+    .top-grey-bar {
+        background: #363636;
+        height: 30px;
+        width: 100%;
+        margin: -1.5rem -1.5rem 0 -1.5rem;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        padding: 0 2rem;
+    }
+    
+    .main-header {
+        background: #F8F5F9;
+        padding: 1rem 2rem;
+        margin: 0 -1.5rem 0 -1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .header-center {
+        flex: 1;
+        display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        border-bottom: 1px solid #f0f0f0;
     }
     
-    .header-logo {
-        max-height: 70px;
-        height: auto;
-        width: auto;
-        margin-bottom: 1rem;
-        animation: fadeInUp 0.8s ease-out;
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
     }
     
-    .header-logo img {
-        max-height: 70px;
-        width: auto;
-        height: auto;
+    .icon-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #E8E8E8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
     }
     
-    .header-content {
-        text-align: center;
-        animation: fadeInUp 1s ease-out 0.2s both;
+    .icon-circle svg {
+        width: 20px;
+        height: 20px;
     }
     
-    .header-title {
-        font-size: 1.5rem;
+    .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #A87DC0;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+    
+    .logo-cloud {
+        background: #A87DC0;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        color: white;
         font-weight: 700;
-        color: #c59bd1;
-        margin: 0 0 0.5rem 0;
-        letter-spacing: -0.01em;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(168, 125, 192, 0.3);
     }
     
-    .header-subtitle {
-        font-size: 1rem;
-        font-weight: 400;
-        color: #666;
-        margin: 0;
-        line-height: 1.5;
+    .logo-cloud .logo-text-large {
+        font-size: 1.1rem;
+        font-weight: 800;
+    }
+    
+    .logo-cloud .logo-text-small {
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+    
+    .logo-cloud::before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: -6px;
+        width: 10px;
+        height: 10px;
+        background: #A87DC0;
+        border-radius: 50%;
+    }
+    
+    .logo-cloud::after {
+        content: '';
+        position: absolute;
+        left: -3px;
+        top: -3px;
+        width: 6px;
+        height: 6px;
+        background: #A87DC0;
+        border-radius: 50%;
+    }
+    
+    .logo-dot {
+        width: 6px;
+        height: 6px;
+        background: #A87DC0;
+        border-radius: 50%;
+        margin-left: 0.3rem;
+    }
+    
+    .contact-btn {
+        background: #A87DC0;
+        color: white;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .contact-btn:hover {
+        background: #9568b0;
+        transform: translateY(-1px);
+    }
+    
+    .nav-bar {
+        background: #C9A8D9;
+        padding: 0.75rem 2rem;
+        margin: 0 -1.5rem 2rem -1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .nav-link {
+        color: #363636;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+        color: #A87DC0;
     }
     
     @keyframes fadeInUp {
@@ -337,40 +453,70 @@ def color_distance(c1, c2):
     distance = (2 + r_mean/256) * delta_r**2 + 4 * delta_g**2 + (2 + (255-r_mean)/256) * delta_b**2
     return distance**0.5
 
-# PurpleStore Header - Centered, Minimal (matching www.purplestore.com.pk)
-# Check for logo file (common names)
-logo_paths = ["logo.png", "logo.jpg", "purplestore-logo.png", "purplestore-logo.jpg", "assets/logo.png"]
-logo_path = None
-for path in logo_paths:
-    if os.path.exists(path):
-        logo_path = path
-        break
-
-# Centered header
+# PurpleStore Header - Exact Match from Image
+# Top grey bar
 st.markdown("""
-<div class="top-header">
+<div class="top-grey-bar">
+</div>
 """, unsafe_allow_html=True)
 
-# Display logo if exists, otherwise use text logo
-if logo_path:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image(logo_path, width=150, use_container_width=False)
-else:
-    # Text-based logo matching PurpleStore style
-    st.markdown("""
-    <div style="text-align: center; margin-bottom: 1rem; animation: fadeInUp 0.8s ease-out;">
-        <div style="font-size: 2rem; font-weight: 800; color: #c59bd1;">
-            Purple Store
+# Main header section
+st.markdown("""
+<div class="main-header">
+    <div class="header-left">
+        <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
         </div>
     </div>
-    """, unsafe_allow_html=True)
-
-st.markdown("""
-    <div class="header-content">
-        <div class="header-title">Hijab Color Matcher</div>
-        <div class="header-subtitle">Find the perfect hijab color to match your outfit</div>
+    
+    <div class="header-center">
+        <div class="logo-cloud">
+            <span class="logo-text-large">Purple</span>
+            <span class="logo-text-small">Store</span>
+            <span class="logo-dot"></span>
+            <span class="logo-dot"></span>
+        </div>
     </div>
+    
+    <div class="header-right">
+        <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <div class="badge">1</div>
+        </div>
+        <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <div class="badge">0</div>
+        </div>
+        <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 12px; height: 12px; margin-left: -5px;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </div>
+        <button class="contact-btn">Contact Us</button>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# Navigation bar
+st.markdown("""
+<div class="nav-bar">
+    <a href="#" class="nav-link">Home</a>
+    <a href="#" class="nav-link">Hijabs By Fabric</a>
+    <a href="#" class="nav-link">Hijab Deals</a>
+    <a href="#" class="nav-link">Eid Boxes</a>
+    <a href="#" class="nav-link">Namaz Chadar</a>
+    <a href="#" class="nav-link">Hijab Sets</a>
+    <a href="#" class="nav-link">Accessories</a>
+    <a href="#" class="nav-link">Trinket Trays</a>
 </div>
 """, unsafe_allow_html=True)
 
