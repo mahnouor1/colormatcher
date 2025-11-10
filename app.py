@@ -15,10 +15,72 @@ st.set_page_config(
 # Custom CSS - Coolors-inspired minimal design
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@400;600;700;800&display=swap');
     
     * {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    /* Modern Header */
+    .top-header {
+        background: #c59bd1;
+        padding: 1.25rem 2.5rem;
+        margin: -1.5rem -1.5rem 2rem -1.5rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(197, 155, 209, 0.2);
+        min-height: 80px;
+    }
+    
+    .header-content {
+        text-align: right;
+        color: white;
+        animation: slideInRight 0.8s ease-out;
+    }
+    
+    .header-brand {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: white;
+        margin: 0 0 0.25rem 0;
+        letter-spacing: -0.01em;
+    }
+    
+    .header-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.95);
+        margin: 0 0 0.25rem 0;
+        animation: fadeIn 1s ease-out 0.2s both;
+    }
+    
+    .header-subtitle {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0;
+        animation: fadeIn 1s ease-out 0.4s both;
+    }
+    
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
     
     .main-container {
@@ -269,6 +331,17 @@ def color_distance(c1, c2):
     distance = (2 + r_mean/256) * delta_r**2 + 4 * delta_g**2 + (2 + (255-r_mean)/256) * delta_b**2
     return distance**0.5
 
+# Modern Header - Top bar with purple background
+st.markdown("""
+<div class="top-header">
+    <div class="header-content">
+        <div class="header-brand">PurpleStore</div>
+        <div class="header-title">Hijab Color Matcher</div>
+        <div class="header-subtitle">Find the perfect hijab color to match your outfit.</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 # Main layout - Coolors style
 st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
@@ -276,17 +349,9 @@ st.markdown('<div class="main-container">', unsafe_allow_html=True)
 col1, col2 = st.columns([1, 1], gap="large")
 
 with col1:
-    # Large bold heading section
+    # Upload section - compact, left-aligned (header is now in top bar)
     st.markdown("""
-    <div class="left-content">
-        <h1 class="hero-title">🧕 PurpleStore<br>Hijab Color Matcher</h1>
-        <p class="hero-subtitle">Find the perfect hijab color to match your outfit</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Upload section - compact, left-aligned
-    st.markdown("""
-    <div class="upload-section">
+    <div class="upload-section" style="margin-top: 0;">
         <h3 class="upload-title">📸 Upload Your Outfit Photo</h3>
         <p class="upload-subtitle">Upload a clear photo of your outfit to get personalized hijab color recommendations.</p>
     </div>
