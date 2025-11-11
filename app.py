@@ -13,13 +13,243 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS - Coolors-inspired minimal design
+# Custom CSS - Landing Page Design
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@400;600;700;800&family=Caveat:wght@400;600;700&display=swap');
     
     * {
         font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    /* Light beige background */
+    .stApp {
+        background: #F5F1E8 !important;
+    }
+    
+    /* Remove default Streamlit padding/margins */
+    .main .block-container {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Remove gaps in columns */
+    [data-testid="column"] {
+        padding: 0 !important;
+    }
+    
+    /* Decorative elements */
+    .landing-page {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+    
+    .landing-page::before {
+        content: '';
+        position: absolute;
+        top: 10%;
+        right: 5%;
+        width: 150px;
+        height: 150px;
+        background: rgba(201, 168, 217, 0.2);
+        border-radius: 50%;
+        z-index: 0;
+    }
+    
+    .landing-page::after {
+        content: '';
+        position: absolute;
+        bottom: 15%;
+        left: 8%;
+        width: 100px;
+        height: 100px;
+        background: rgba(201, 168, 217, 0.15);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        z-index: 0;
+    }
+    
+    /* Left Section Styles */
+    .landing-left {
+        position: relative;
+        z-index: 1;
+        padding: 0;
+        margin-top: 1rem;
+    }
+    
+    .brand-box {
+        display: inline-block;
+        background: #E8D5F2;
+        padding: 0.4rem 1.2rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+    
+    .brand-text {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #000;
+        letter-spacing: 0.05em;
+        margin: 0;
+    }
+    
+    .tagline-container {
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+    
+    .tagline-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #000;
+        margin: 0;
+    }
+    
+    .tagline-highlight {
+        display: inline-block;
+        background: #E8D5F2;
+        padding: 0.3rem 1rem;
+        border-radius: 12px;
+        margin: 0.2rem 0;
+    }
+    
+    .upload-btn {
+        background: linear-gradient(135deg, #C9A8D9 0%, #A87DC0 100%);
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(168, 125, 192, 0.3);
+        margin-top: 0.5rem;
+    }
+    
+    .upload-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(168, 125, 192, 0.4);
+    }
+    
+    /* Style Streamlit button to match upload-btn design */
+    div[data-testid="stButton"] > button[kind="secondary"] {
+        background: linear-gradient(135deg, #C9A8D9 0%, #A87DC0 100%) !important;
+        color: white !important;
+        border: none !important;
+        padding: 1rem 2.5rem !important;
+        border-radius: 30px !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        box-shadow: 0 4px 15px rgba(168, 125, 192, 0.3) !important;
+        transition: all 0.3s ease !important;
+        width: auto !important;
+    }
+    
+    div[data-testid="stButton"] > button[kind="secondary"]:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(168, 125, 192, 0.4) !important;
+    }
+    
+    /* Right Section Styles */
+    .landing-right {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin-top: 1rem;
+    }
+    
+    .available-colors-text {
+        font-family: 'Caveat', cursive;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .dotted-arrow {
+        position: absolute;
+        width: 120px;
+        height: 80px;
+        z-index: 1;
+        margin-top: -20px;
+        margin-left: 150px;
+    }
+    
+    .dotted-arrow svg {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .phone-mockup {
+        width: 240px;
+        height: 480px;
+        background: #000;
+        border-radius: 30px;
+        padding: 15px 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 2;
+        margin-top: 0.5rem;
+    }
+    
+    .phone-screen {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border-radius: 25px;
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        overflow: hidden;
+    }
+    
+    .hijab-display {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        align-items: stretch;
+    }
+    
+    .hijab-item {
+        flex: 1;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .hijab-color {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hijab-label {
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%) rotate(-90deg);
+        transform-origin: center;
+        color: #000;
+        font-size: 0.7rem;
+        font-weight: 600;
+        white-space: nowrap;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
     }
     
     /* PurpleStore Header - Exact Match from Image */
@@ -120,23 +350,18 @@ st.markdown("""
     .nav-bar {
         background: #C9A8D9;
         padding: 0.75rem 2rem;
-        margin: 0 -1.5rem 2rem -1.5rem;
+        margin: 0 -1.5rem 0 -1.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
     }
     
-    .nav-link {
-        color: #363636;
+    .nav-title {
+        color: white;
         text-decoration: none;
         font-weight: 500;
-        font-size: 0.95rem;
-        transition: color 0.3s;
-    }
-    
-    .nav-link:hover {
-        color: #A87DC0;
+        font-size: 1.1rem;
+        text-align: center;
     }
     
     @keyframes fadeInUp {
@@ -408,12 +633,31 @@ def color_distance(c1, c2):
     return distance**0.5
 
 # PurpleStore Header - Exact Match from Image
-# Check for logo file first
-logo_paths = ["logo.png", "logo.jpg", "purplestore-logo.png", "purplestore-logo.jpg", "assets/logo.png", "logo.svg"]
+# Check for logo file first - improved detection
+logo_paths = [
+    "PS LOGO.png", "PS LOGO.jpg", "PS LOGO.jpeg",
+    "ps logo.png", "ps logo.jpg", "ps logo.jpeg",
+    "PS_LOGO.png", "PS_LOGO.jpg", "PS_LOGO.jpeg",
+    "logo.png", "logo.jpg", "logo.jpeg",
+    "purplestore-logo.png", "purplestore-logo.jpg",
+    "assets/logo.png", "assets/PS LOGO.png",
+    "logo.svg"
+]
+
 logo_path = None
+current_dir = os.getcwd()
+
+# Check each path
 for path in logo_paths:
-    if os.path.exists(path):
-        logo_path = path
+    full_path = os.path.join(current_dir, path)
+    if os.path.exists(full_path):
+        logo_path = full_path
+        break
+    # Also check relative to script location
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_path = os.path.join(script_dir, path)
+    if os.path.exists(script_path):
+        logo_path = script_path
         break
 
 # Build complete header HTML as single string
@@ -423,15 +667,21 @@ if logo_path:
         with open(logo_path, "rb") as f:
             logo_data = base64.b64encode(f.read()).decode()
             logo_ext = logo_path.split('.')[-1].lower()
-            logo_html = f'<img src="data:image/{logo_ext};base64,{logo_data}" class="logo-image" alt="PurpleStore Logo" style="max-height: 60px; width: auto; height: auto;">'
-    except:
-        logo_html = f'<img src="{logo_path}" class="logo-image" alt="PurpleStore Logo" style="max-height: 60px; width: auto; height: auto;">'
+            if logo_ext == 'jpg':
+                logo_ext = 'jpeg'
+            logo_html = f'<img src="data:image/{logo_ext};base64,{logo_data}" class="logo-image" alt="PurpleStore Logo" style="max-height: 50px; width: auto; height: auto; display: block; margin: 0 auto; object-fit: contain;">'
+    except Exception as e:
+        # Fallback to relative path
+        try:
+            rel_path = os.path.relpath(logo_path, current_dir)
+            logo_html = f'<img src="{rel_path}" class="logo-image" alt="PurpleStore Logo" style="max-height: 50px; width: auto; height: auto; display: block; margin: 0 auto; object-fit: contain;">'
+        except:
+            logo_html = '<div style="color: #A87DC0; font-weight: 700; font-size: 2.5rem; text-align: center; width: 100%;">Purple Store</div>'
 else:
-    logo_html = '<div style="color: #A87DC0; font-weight: 700; font-size: 1.2rem; text-align: center;">Purple Store</div>'
+    logo_html = '<div style="color: #A87DC0; font-weight: 700; font-size: 2.5rem; text-align: center; width: 100%;">Purple Store</div>'
 
 # Complete header HTML - build as single string
-header_html = '<div class="top-grey-bar"></div>'
-header_html += '<div class="main-header">'
+header_html = '<div class="main-header">'
 header_html += '<div class="header-left"><div class="icon-circle"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg></div></div>'
 header_html += '<div class="header-center">' + logo_html + '</div>'
 header_html += '<div class="header-right">'
@@ -446,75 +696,107 @@ st.markdown(header_html, unsafe_allow_html=True)
 # Navigation bar
 st.markdown("""
 <div class="nav-bar">
-    <a href="#" class="nav-link">Home</a>
-    <a href="#" class="nav-link">Hijabs By Fabric</a>
-    <a href="#" class="nav-link">Hijab Deals</a>
-    <a href="#" class="nav-link">Eid Boxes</a>
-    <a href="#" class="nav-link">Namaz Chadar</a>
-    <a href="#" class="nav-link">Hijab Sets</a>
-    <a href="#" class="nav-link">Accessories</a>
-    <a href="#" class="nav-link">Trinket Trays</a>
+    <div class="nav-title">Hijab color matcher</div>
 </div>
 """, unsafe_allow_html=True)
 
-# Main layout - Coolors style
-st.markdown('<div class="main-container">', unsafe_allow_html=True)
+# Main Landing Page Layout
+st.markdown('<div class="landing-page">', unsafe_allow_html=True)
 
-# Hero section - Coolors style layout
-col1, col2 = st.columns([1, 1], gap="large")
+# Initialize session state for upload trigger
+if 'show_uploader' not in st.session_state:
+    st.session_state.show_uploader = False
+if 'uploaded_file' not in st.session_state:
+    st.session_state.uploaded_file = None
 
-with col1:
-    # Upload section - compact, left-aligned (header is now in top bar)
-    st.markdown("""
-    <div class="upload-section" style="margin-top: 0;">
-        <h3 class="upload-title">📸 Upload Your Outfit Photo</h3>
-        <p class="upload-subtitle">Upload a clear photo of your outfit to get personalized hijab color recommendations.</p>
-    </div>
-    """, unsafe_allow_html=True)
+# Check if file is uploaded - if not, show landing page
+uploaded_file = st.session_state.uploaded_file
+
+if uploaded_file is None:
+    # Landing Page - Two Column Layout
+    col1, col2 = st.columns([1, 1], gap="small")
     
-    # File uploader
-    uploaded_file = st.file_uploader(
-        "Choose an image file", 
-        type=['png', 'jpg', 'jpeg'],
-        help="Upload a clear photo of your outfit",
-        key="file_uploader_main"
-    )
-
+    with col1:
+        # Left Section
+        st.markdown("""
+        <div class="landing-left">
+            <div class="brand-box">
+                <p class="brand-text">PURPLE STORE</p>
+            </div>
+            <div class="tagline-container">
+                <p class="tagline-text">
+                    find the <span class="tagline-highlight">perfect hijab color to match</span> your outfit!
+                </p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Upload Button - triggers file uploader
+        if st.button("UPLOAD A PHOTO", key="upload_trigger", use_container_width=False):
+            st.session_state.show_uploader = True
+            st.rerun()
+        
+        # Show uploader if triggered
+        if st.session_state.show_uploader:
+            uploaded_file = st.file_uploader(
+                "Upload a photo", 
+                type=['png', 'jpg', 'jpeg'],
+                help="Upload a clear photo of your outfit",
+                key="file_uploader_main"
+            )
+            if uploaded_file is not None:
+                st.session_state.uploaded_file = uploaded_file
+                st.session_state.show_uploader = False
+                st.rerun()
+    
     with col2:
-        if uploaded_file is None:
-            # Right side - Color grid mockup (like Coolors)
-            st.markdown("""
-            <div class="right-content">
-                <div class="color-mockup">
-                    <div class="section-label">Available Colors</div>
-                    <div class="color-grid">
-            """, unsafe_allow_html=True)
-            
-            # Show sample colors from catalog
-            sample_colors = catalog.head(10)
-            cols = st.columns(5)
-            for i, (_, row) in enumerate(sample_colors.iterrows()):
-                if i < 5:
-                    with cols[i]:
-                        st.markdown(f"""
-                        <div class="color-swatch" style="background: {row['hex']};"></div>
-                        """, unsafe_allow_html=True)
-            
-            st.markdown("""
-                    </div>
-                    <div class="section-label" style="margin-top: 1.5rem;">How It Works</div>
-                    <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-top: 0.5rem;">
-                        1. Upload your outfit photo<br>
-                        2. We detect the dominant colors<br>
-                        3. Get perfect hijab matches<br>
-                        4. Shop directly from our store
-                    </p>
+        # Right Section - Available Colors and Phone Mockup
+        st.markdown("""
+        <div class="landing-right">
+            <div style="position: relative; display: inline-block;">
+                <p class="available-colors-text">Available Colors</p>
+                <div class="dotted-arrow">
+                    <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 10 40 Q 50 20, 90 30 T 110 40" 
+                              stroke="#C9A8D9" 
+                              stroke-width="2" 
+                              fill="none" 
+                              stroke-dasharray="5,5" 
+                              stroke-linecap="round"/>
+                        <polygon points="105,35 110,40 105,45" 
+                                 fill="#C9A8D9"/>
+                    </svg>
                 </div>
             </div>
-            """, unsafe_allow_html=True)
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="hijab-display">
+                        <div class="hijab-item">
+                            <div class="hijab-color" style="background: #800020;"></div>
+                            <div class="hijab-label">Maroon</div>
+                        </div>
+                        <div class="hijab-item">
+                            <div class="hijab-color" style="background: #E6B8B7;"></div>
+                            <div class="hijab-label">Dusky Pink</div>
+                        </div>
+                        <div class="hijab-item">
+                            <div class="hijab-color" style="background: #228B22;"></div>
+                            <div class="hijab-label">Forest Green</div>
+                        </div>
+                        <div class="hijab-item">
+                            <div class="hijab-color" style="background: #BDB76B;"></div>
+                            <div class="hijab-label">Khaki</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
-    with col2:
-        if uploaded_file is not None:
+else:
+    # File uploaded - show results
+    uploaded_file = st.session_state.uploaded_file
+    if uploaded_file is not None:
             # When photo is uploaded - show results on right side
             try:
                 # Save uploaded file
